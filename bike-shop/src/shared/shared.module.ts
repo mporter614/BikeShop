@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ConfigurableExternalApiWidgetComponent } from './configurable-external-api-widget/configurable-external-api-widget.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ConfigurableExternalApiWidgetComponent
+  ],
   imports: [
     CommonModule
   ]
