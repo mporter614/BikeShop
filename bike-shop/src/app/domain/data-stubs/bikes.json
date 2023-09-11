@@ -1,0 +1,63 @@
+//TODO: populate photo URL and load on UI
+[
+  {
+    "id": 1,
+    "name": "2016 Mountain Champion XL",
+    "description": "One of the best mountain bikes",
+    "price": 102.79,
+    "quantity": 3,
+    "type": 0,
+    "rating": 4.72,
+    "photoUrl": ""
+  },
+  {
+    "id": 2,
+    "name": "2002 Mongoose Tailwhipper",
+    "description": "BMX champion endorsed",
+    "price": 213.99,
+    "quantity": 1,
+    "type": 2,
+    "rating": 3.87,
+    "photoUrl": ""
+  },
+  {
+    "id": 3,
+    "name": "Pennyfarthing Deluxe",
+    "description": "Replica of high-flying proto-bike",
+    "price": 322.49,
+    "quantity": 0,
+    "type": 5,
+    "rating": 5.00,
+    "photoUrl": ""
+  },
+  {
+    "id": 4,
+    "name": "2022 Tandem Turbo",
+    "description": "Sleek tandem with low drag and high top speed",
+    "price": 469.67,
+    "quantity": 2,
+    "type": 4,
+    "rating": 4.15,
+    "photoUrl": ""
+  },
+  {
+    "id": 5,
+    "name": "2020 Commuter",
+    "description": "Durable and very comfortable street bike",
+    "price": 182.85,
+    "quantity": 3,
+    "type": 1,
+    "rating": 4.84,
+    "photoUrl": ""
+  },
+  {
+    "id": 6,
+    "name": "Training Wheelies",
+    "description": "Go from 4 to 2 to 1 wheels in no time!",
+    "price": 110.99,
+    "quantity": 4,
+    "type": 3,
+    "rating": 3.67,
+    "photoUrl": ""
+  },
+]
