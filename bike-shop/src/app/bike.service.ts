@@ -22,7 +22,7 @@ export class BikeService {
   //Expose as observable to prevent writes by consumers to the subject
   readonly bikes$ = this._bikes.asObservable();
 
-  //Getter and setter allow for easier redux-like updates below in service methods(working with underlying data instead of observables)
+  //Getter and setter allow for easier redux-like updates below in service methods(working with underlying data retrieved from our Subject instead of observables)
   get bikes(): Bike[] {
     return this._bikes.getValue();
   }
@@ -52,9 +52,25 @@ export class BikeService {
     );
   }
 
-  create() {}
+  create(bikeData: Bike) {
+    this.bikes = [
+      ...this.bikes,
+      { ...bikeData, id: String(this.bikes.length + 1) },
+    ];
+  }
 
-  update(id: string) {}
+  update(id: string, bikeData: Bike) {
+    let bikeToUpdate = this.bikes.find((bike) => bike.id === id);
 
-  delete(id: string) {}
+    if (bikeToUpdate) {
+      const index = this.bikes.indexOf(bikeToUpdate);
+      this.bikes[index] = { ...bikeToUpdate, ...bikeData };
+
+      this.bikes = [...this.bikes];
+    }
+  }
+
+  delete(id: string) {
+    this.bikes = this.bikes.filter((bike) => bike.id !== id);
+  }
 }
