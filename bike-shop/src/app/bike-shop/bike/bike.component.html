@@ -1,1 +1,12 @@
-<p>bike works!</p>
+<h3 style="font-weight: bold">Bike Details</h3>
+
+<form [formGroup]="bikeForm" (ngSubmit)="onSubmit()">
+  <label for="name">Name: </label>
+  <input id="name" type="text" formControlName="name" />
+
+  <label for="description">Description: </label>
+  <input id="description" type="text" formControlName="description" />
+
+  <p>Complete the form to enable button.</p>
+  <button type="submit" [disabled]="!bikeForm.valid">Submit</button>
+</form>
