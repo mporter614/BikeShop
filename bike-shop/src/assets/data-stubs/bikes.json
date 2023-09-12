@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "2016 Mountain Champion XL",
     "description": "One of the best mountain bikes",
     "price": 102.79,
@@ -10,7 +10,7 @@
     "photoUrl": ""
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "2002 Mongoose Tailwhipper",
     "description": "BMX champion endorsed",
     "price": 213.99,
@@ -20,7 +20,7 @@
     "photoUrl": ""
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Pennyfarthing Deluxe",
     "description": "Replica of high-flying proto-bike",
     "price": 322.49,
@@ -30,7 +30,7 @@
     "photoUrl": ""
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "2022 Tandem Turbo",
     "description": "Sleek tandem with low drag and high top speed",
     "price": 469.67,
@@ -40,7 +40,7 @@
     "photoUrl": ""
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "2020 Commuter",
     "description": "Durable and very comfortable street bike",
     "price": 182.85,
@@ -50,7 +50,7 @@
     "photoUrl": ""
   },
   {
-    "id": 6,
+    "id": "6",
     "name": "Training Wheelies",
     "description": "Go from 4 to 2 to 1 wheels in no time!",
     "price": 110.99,
