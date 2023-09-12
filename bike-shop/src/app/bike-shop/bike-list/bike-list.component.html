@@ -1,17 +1,13 @@
-<mat-card>
-  <section style="margin: 8px">
-    <h3 style="font-weight: bold">Bike List</h3>
+<h3 style="font-weight: bold">Bike List</h3>
 
-    <mat-list>
-      <mat-list-item *ngFor="let bike of bikes$ | async; last as last">
-        <a matListItemTitle href="bikes/{{ bike.id }}">{{ bike.name }}</a>
-        {{ bike | json }}
-        <mat-divider
-          [inset]="true"
-          *ngIf="!last"
-          style="margin-left: 0px"
-        ></mat-divider>
-      </mat-list-item>
-    </mat-list>
-  </section>
-</mat-card>
+<mat-list>
+  <mat-list-item *ngFor="let bike of bikes$ | async; last as last">
+    <a matListItemTitle [routerLink]="['/bikes', bike.id]">{{ bike.name }}</a>
+    {{ bike | json }}
+    <mat-divider
+      [inset]="true"
+      *ngIf="!last"
+      style="margin-left: 0px"
+    ></mat-divider>
+  </mat-list-item>
+</mat-list>
