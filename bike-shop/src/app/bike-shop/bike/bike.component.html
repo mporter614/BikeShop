@@ -1,11 +1,39 @@
 <h3 style="font-weight: bold">Bike Details</h3>
 
+<div
+  style="display: flex; flex-direction: row; column-gap: 40%; align-items: end"
+>
+  <a [routerLink]="['/bikes']">< Back to Bikes</a>
+
+  <div style="display: flex; flex-direction: row; gap: 1rem">
+    <button (click)="onCreate()">CREATE BIKE</button>
+    <button (click)="onUpdate()">UPDATE BIKE</button>
+    <button (click)="onDelete()">DELETE BIKE</button>
+  </div>
+</div>
+
+<br />
+<br />
+
 <form [formGroup]="bikeForm" (ngSubmit)="onSubmit()">
   <label for="name">Name: </label>
   <input id="name" type="text" formControlName="name" />
 
   <label for="description">Description: </label>
   <input id="description" type="text" formControlName="description" />
+
+  <label for="price">Price: </label>
+  <input id="price" type="number" formControlName="price" />
+
+  <label for="quantity">Quantity: </label>
+  <input id="quantity" type="number" formControlName="quantity" />
+
+  <label for="type">Type: </label>
+  <select id="type" formControlName="type">
+    <option *ngFor="let key of typeEnumKeys" [value]="key">
+      {{ bikeType[key] }}
+    </option>
+  </select>
 
   <p>Complete the form to enable button.</p>
   <button type="submit" [disabled]="!bikeForm.valid">Submit</button>
