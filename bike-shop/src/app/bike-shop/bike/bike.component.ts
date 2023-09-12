@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { BikeService } from 'src/app/bike.service';
 import { Bike, BikeType } from 'src/app/domain/bike';
 
 @Component({
@@ -19,22 +21,23 @@ export class BikeComponent implements OnInit {
     photoUrl: [''],
   });
 
-  bikeData: Bike = {
-    id: '10983-12313',
-    name: 'Bikey bikerson',
-    description: 'cool bike',
-    price: 100.77,
-    quantity: 23,
-    type: BikeType.Tandem,
-    rating: 0,
-    photoUrl: '',
-  };
+  bikeData!: Bike | null;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private bikeService: BikeService
+  ) {}
 
   ngOnInit(): void {
     //Experiment to simplify the form group definitions / not bog them down with initialization
-    this.bikeForm.patchValue({ ...this.bikeData });
+    const bikeId = this.route.snapshot.paramMap.get('id');
+    console.log('bikeId from route params', bikeId);
+    this.bikeService.get(bikeId ?? '').subscribe((res) => {
+      console.log(res);
+      this.bikeData = res ?? null;
+      this.bikeForm.patchValue({ ...this.bikeData });
+    });
   }
 
   onSubmit() {
