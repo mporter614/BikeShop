@@ -1,13 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable, Inject, InjectionToken } from '@angular/core';
-import { Observable, map, of } from 'rxjs';
+import { Observable } from 'rxjs';
 
 export const API_ENDPOINT_TOKEN = new InjectionToken<string>(
   'ApiEndpointToken'
 );
-
-//Currently hard coding here to show 6 temperatures in UI
-const NUMBER_OF_TEMPS = 6;
 
 @Injectable({
   providedIn: 'root',
@@ -20,8 +17,6 @@ export class ConfigurableExternalApiService {
   ) {}
 
   public get(): Observable<Object> {
-    console.log(this.config);
-
     return this.http.get(this.config);
   }
 }

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { Bike, BikeType } from '../../domain/bike';
+import { Bike } from '../../domain/bike';
 import { BikeService } from 'src/app/bike.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';

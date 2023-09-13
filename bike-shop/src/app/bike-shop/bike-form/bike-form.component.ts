@@ -59,7 +59,6 @@ export class BikeFormComponent implements OnInit {
       .map(Number);
   }
   ngOnInit(): void {
-    //read bike data from input
     if (this.data?.bike) {
       this.bikeForm.patchValue({ ...this.data?.bike });
     }
