@@ -12,6 +12,9 @@
   </div>
 </div>
 
-<section>
+<br />
+<br />
+
+<section *ngIf="bikeData$ | async as bikeData">
   {{ bikeData | json }}
 </section>

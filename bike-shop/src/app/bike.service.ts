@@ -3,7 +3,7 @@ import { Bike } from './domain/bike';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, ReplaySubject, Subject, of } from 'rxjs';
 
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
@@ -45,10 +45,11 @@ export class BikeService {
     return this.bikes$;
   }
 
-  //Ugly typing here, would handle on API side by returning empty response and mapping accordingly
-  get(id: string): Observable<Bike | undefined> {
+  //Filtering out undefined to get rid of initial empty state of BehaviorSubject above
+  get(id: string): Observable<Bike> {
     return this.bikes$.pipe(
-      map((bikes) => bikes.filter((bike) => bike.id === id)[0])
+      map((bikes) => bikes.filter((bike) => bike.id === id)[0]),
+      filter((res) => res !== undefined)
     );
   }
 
