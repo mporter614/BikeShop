@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Bike, BikeType } from 'src/app/domain/bike';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-bike-form',
@@ -25,25 +25,24 @@ export class BikeFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<BikeFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { bike: Bike }
   ) {
-    console.log(Object.keys(this.bikeType));
+    //Adjusting enum of bikeType to be able to show strings on UI
     this.typeEnumKeys = Object.keys(this.bikeType)
       .filter((f) => !isNaN(Number(f)))
       .map(Number);
-    //this.enumKeys = this.enumKeys.map(key => Number(key));
-    console.log(this.typeEnumKeys);
   }
   ngOnInit(): void {
     //read bike data from input
     if (this.data?.bike) {
       this.bikeForm.patchValue({ ...this.data?.bike });
     }
-    throw new Error('Method not implemented.');
   }
 
   onSubmit() {
     // TODO: emit + consume form data in parent component
     console.log(this.bikeForm.value);
+    this.dialogRef.close(this.bikeForm.value);
   }
 }

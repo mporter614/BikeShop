@@ -4,18 +4,21 @@
   style="display: flex; flex-direction: row; column-gap: 40%; align-items: end"
 >
   <a [routerLink]="['/bikes']">< Back to Bikes</a>
-
-  <div style="display: flex; flex-direction: row; gap: 1rem">
-    <button (click)="onCreate()">CREATE BIKE</button>
-    <button (click)="onUpdate()">UPDATE BIKE</button>
-    <button (click)="onDelete()">DELETE BIKE</button>
-  </div>
 </div>
 
 <br />
 <br />
 
 <section *ngIf="bikeData$ | async as bikeData">
+  <div style="display: flex; flex-direction: row; gap: 1rem">
+    <button (click)="onCreate(bikeData)">CREATE BIKE</button>
+    <button (click)="onUpdate(bikeData)">UPDATE BIKE</button>
+    <button (click)="onDelete(bikeData)">DELETE BIKE</button>
+  </div>
+
+  <br />
+  <br />
+
   <div style="display: flex; flex-direction: column">
     <span>
       <h3 class="field-title">Name:</h3>

@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { BikeListComponent } from './bike-list/bike-list.component';
 import { BikeComponent } from './bike/bike.component';
@@ -18,6 +19,7 @@ import { BikeFormComponent } from './bike-form/bike-form.component';
     MatCardModule,
     MatListModule,
     MatDividerModule,
+    MatDialogModule,
     BikeShopRoutingModule,
   ],
 })
