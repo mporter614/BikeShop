@@ -10,11 +10,7 @@
 <br />
 
 <section *ngIf="bikeData$ | async as bikeData">
-  <div style="display: flex; flex-direction: row; gap: 1rem">
-    <button (click)="onCreate()">CREATE BIKE</button>
-    <button (click)="onUpdate(bikeData)">UPDATE BIKE</button>
-    <button (click)="onDelete()">DELETE BIKE</button>
-  </div>
+  <button (click)="onUpdate(bikeData)">UPDATE BIKE</button>
 
   <br />
   <br />

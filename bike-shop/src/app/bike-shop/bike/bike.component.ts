@@ -40,18 +40,6 @@ export class BikeComponent {
     return dialogRef.afterClosed();
   }
 
-  onCreate() {
-    console.log('onCreate clicked');
-    this.openDialog().subscribe((result) => {
-      console.log(result);
-      console.log('The dialog was closed');
-      if (result) {
-        console.log('calling create');
-        this.bikeService.create(result);
-      }
-    });
-  }
-
   onUpdate(bike: Bike) {
     console.log(bike);
     console.log('onUpdate clicked');
@@ -63,11 +51,5 @@ export class BikeComponent {
         this.bikeService.update(this.bikeId, result);
       }
     });
-  }
-
-  onDelete() {
-    console.log('onDelete clicked');
-    console.log('calling delete for bike:', this.bikeId);
-    this.bikeService.delete(this.bikeId);
   }
 }
