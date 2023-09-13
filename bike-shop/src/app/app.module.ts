@@ -8,7 +8,7 @@ import { MatCardModule } from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { API_ENDPOINT_TOKEN } from './shared/configurable-external-api-widget/configurable-external-api-widget.component';
+import { API_ENDPOINT_TOKEN } from './shared/configurable-external-api.service';
 
 // Found this free government API at https://www.weather.gov/documentation/services-web-api
 // and queried https://api.weather.gov/points/36.0395,-114.9817 for Henderson, NV forecast endpoint
