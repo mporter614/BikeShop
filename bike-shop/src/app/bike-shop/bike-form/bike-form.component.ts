@@ -61,7 +61,6 @@ export class BikeFormComponent implements OnInit {
   }
 
   onSubmit() {
-    // TODO: emit + consume form data in parent component
     console.log(this.bikeForm.value);
     this.dialogRef.close(this.bikeForm.value);
   }

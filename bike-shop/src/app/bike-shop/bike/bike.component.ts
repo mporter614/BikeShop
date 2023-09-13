@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { BikeService } from 'src/app/bike.service';
 import { Bike, BikeType } from 'src/app/domain/bike';
 import { BikeFormComponent } from '../bike-form/bike-form.component';
@@ -16,8 +16,11 @@ import { BikeFormComponent } from '../bike-form/bike-form.component';
 export class BikeComponent {
   bikeType = BikeType;
 
+  bikeId = '';
+
   bikeData$: Observable<Bike> = this.route.params.pipe(
     map((p) => p['id']),
+    tap((id) => (this.bikeId = id)),
     switchMap((id) => this.bikeService.get(id ?? ''))
   );
 
@@ -27,29 +30,44 @@ export class BikeComponent {
     private bikeService: BikeService
   ) {}
 
-  openDialog(bike: Bike): void {
+  openDialog(bike?: Bike): Observable<any> {
     const dialogRef = this.dialog.open(BikeFormComponent, {
       height: '600px',
       width: '800px',
       data: { bike: bike },
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
+    return dialogRef.afterClosed();
+  }
+
+  onCreate() {
+    console.log('onCreate clicked');
+    this.openDialog().subscribe((result) => {
+      console.log(result);
       console.log('The dialog was closed');
+      if (result) {
+        console.log('calling create');
+        this.bikeService.create(result);
+      }
     });
   }
 
-  onCreate(bike: Bike) {
-    console.log(bike);
-    console.log('onCreate clicked');
-    this.openDialog(bike);
-  }
-
   onUpdate(bike: Bike) {
+    console.log(bike);
     console.log('onUpdate clicked');
+    this.openDialog(bike).subscribe((result) => {
+      console.log(result);
+      console.log('The dialog was closed');
+      if (result) {
+        console.log('calling update for bike:', this.bikeId);
+        this.bikeService.update(this.bikeId, result);
+      }
+    });
   }
 
-  onDelete(bike: Bike) {
+  onDelete() {
     console.log('onDelete clicked');
+    console.log('calling delete for bike:', this.bikeId);
+    this.bikeService.delete(this.bikeId);
   }
 }
