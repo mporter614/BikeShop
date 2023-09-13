@@ -16,5 +16,40 @@
 <br />
 
 <section *ngIf="bikeData$ | async as bikeData">
-  {{ bikeData | json }}
+  <div style="display: flex; flex-direction: column">
+    <span>
+      <h3 class="field-title">Name:</h3>
+      <h3>{{ bikeData.name }}</h3>
+    </span>
+
+    <span>
+      <h3 class="field-title">Description:</h3>
+      <h3>{{ bikeData.description }}</h3>
+    </span>
+
+    <span>
+      <h3 class="field-title">Price:</h3>
+      <h3>{{ bikeData.price }}</h3>
+    </span>
+
+    <span>
+      <h3 class="field-title">Quantity:</h3>
+      <h3>{{ bikeData.quantity }}</h3>
+    </span>
+
+    <span>
+      <h3 class="field-title">Type:</h3>
+      <h3>{{ bikeType[bikeData.type] }}</h3>
+    </span>
+
+    <span>
+      <h3 class="field-title">Rating:</h3>
+      <h3>{{ bikeData.rating }}</h3>
+    </span>
+
+    <span>
+      <h3 class="field-title">Photo Url:</h3>
+      <h3>{{ bikeData.photoUrl || "No photo provided." }}</h3>
+    </span>
+  </div>
 </section>

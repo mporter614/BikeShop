@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { BikeService } from 'src/app/bike.service';
-import { Bike } from 'src/app/domain/bike';
+import { Bike, BikeType } from 'src/app/domain/bike';
 
 @Component({
   selector: 'app-bike',
@@ -12,6 +12,8 @@ import { Bike } from 'src/app/domain/bike';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BikeComponent {
+  bikeType = BikeType;
+
   bikeData$: Observable<Bike> = this.route.params.pipe(
     map((p) => p['id']),
     switchMap((id) => this.bikeService.get(id ?? ''))
