@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { BikeListComponent } from './bike-list/bike-list.component';
 import { BikeComponent } from './bike/bike.component';
@@ -20,6 +21,7 @@ import { BikeFormComponent } from './bike-form/bike-form.component';
     MatListModule,
     MatDividerModule,
     MatDialogModule,
+    MatSnackBarModule,
     BikeShopRoutingModule,
   ],
 })

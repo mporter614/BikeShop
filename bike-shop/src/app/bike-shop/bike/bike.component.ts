@@ -9,6 +9,7 @@ import {
   BIKE_FORM_DEFAULT_DIMENSIONS,
   BikeFormComponent,
 } from '../bike-form/bike-form.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-bike',
@@ -30,6 +31,7 @@ export class BikeComponent {
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private bikeService: BikeService
   ) {}
 
@@ -42,15 +44,15 @@ export class BikeComponent {
     return dialogRef.afterClosed();
   }
 
-  onUpdate(bike: Bike) {
-    console.log(bike);
-    console.log('onUpdate clicked');
+  openSnackBar(message: string, action?: string) {
+    this.snackBar.open(message, action);
+  }
+
+  onUpdate(bikeId: string, bike: Bike) {
     this.openDialog(bike).subscribe((result) => {
-      console.log(result);
-      console.log('The dialog was closed');
       if (result) {
-        console.log('calling update for bike:', this.bikeId);
-        this.bikeService.update(this.bikeId, result);
+        this.bikeService.update(bikeId, result);
+        this.openSnackBar(`Bike with bikeId: ${bikeId} updated`);
       }
     });
   }

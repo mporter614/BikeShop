@@ -10,7 +10,7 @@
 <br />
 
 <section *ngIf="bikeData$ | async as bikeData">
-  <button (click)="onUpdate(bikeData)">UPDATE BIKE</button>
+  <button (click)="onUpdate(bikeId, bikeData)">UPDATE BIKE</button>
 
   <br />
   <br />

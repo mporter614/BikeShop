@@ -7,6 +7,7 @@ import {
   BIKE_FORM_DEFAULT_DIMENSIONS,
   BikeFormComponent,
 } from '../bike-form/bike-form.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-bike-list',
   templateUrl: './bike-list.component.html',
@@ -16,7 +17,11 @@ import {
 export class BikeListComponent {
   bikes$: Observable<Bike[]> = this.bikeService.getAll();
 
-  constructor(public dialog: MatDialog, private bikeService: BikeService) {}
+  constructor(
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar,
+    private bikeService: BikeService
+  ) {}
 
   openDialog(bike?: Bike): Observable<any> {
     const dialogRef = this.dialog.open(BikeFormComponent, {
@@ -27,34 +32,30 @@ export class BikeListComponent {
     return dialogRef.afterClosed();
   }
 
+  openSnackBar(message: string, action?: string) {
+    this.snackBar.open(message, action);
+  }
+
   onCreate() {
-    console.log('onCreate clicked');
     this.openDialog().subscribe((result) => {
-      console.log(result);
-      console.log('The dialog was closed');
       if (result) {
-        console.log('calling create');
         this.bikeService.create(result);
+        this.openSnackBar('Bike created');
       }
     });
   }
 
   onUpdate(bikeId: string, bike: Bike) {
-    console.log(bike);
-    console.log('onUpdate clicked');
     this.openDialog(bike).subscribe((result) => {
-      console.log(result);
-      console.log('The dialog was closed');
       if (result) {
-        console.log('calling update for bike:', bikeId);
         this.bikeService.update(bikeId, result);
+        this.openSnackBar(`Bike with bikeId: ${bikeId} updated`);
       }
     });
   }
 
   onDelete(bikeId: string) {
-    console.log('onDelete clicked');
-    console.log('calling delete for bike:', bikeId);
     this.bikeService.delete(bikeId);
+    this.openSnackBar(`Bike with bikeId: ${bikeId} deleted`);
   }
 }
