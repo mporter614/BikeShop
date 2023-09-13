@@ -44,7 +44,7 @@ export class BikeComponent {
     return dialogRef.afterClosed();
   }
 
-  openSnackBar(message: string, action?: string) {
+  openSnackBar(message: string, action: string = 'OKAY') {
     this.snackBar.open(message, action);
   }
 

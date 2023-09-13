@@ -5,7 +5,10 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MAT_SNACK_BAR_DEFAULT_OPTIONS,
+  MatSnackBarModule,
+} from '@angular/material/snack-bar';
 
 import { BikeListComponent } from './bike-list/bike-list.component';
 import { BikeComponent } from './bike/bike.component';
@@ -23,6 +26,9 @@ import { BikeFormComponent } from './bike-form/bike-form.component';
     MatDialogModule,
     MatSnackBarModule,
     BikeShopRoutingModule,
+  ],
+  providers: [
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } },
   ],
 })
 export class BikeShopModule {}
