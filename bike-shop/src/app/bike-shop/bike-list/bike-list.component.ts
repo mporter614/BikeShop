@@ -3,7 +3,10 @@ import { Bike, BikeType } from '../../domain/bike';
 import { BikeService } from 'src/app/bike.service';
 import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { BikeFormComponent } from '../bike-form/bike-form.component';
+import {
+  BIKE_FORM_DEFAULT_DIMENSIONS,
+  BikeFormComponent,
+} from '../bike-form/bike-form.component';
 @Component({
   selector: 'app-bike-list',
   templateUrl: './bike-list.component.html',
@@ -17,8 +20,7 @@ export class BikeListComponent {
 
   openDialog(bike?: Bike): Observable<any> {
     const dialogRef = this.dialog.open(BikeFormComponent, {
-      height: '600px',
-      width: '800px',
+      ...BIKE_FORM_DEFAULT_DIMENSIONS,
       data: { bike: bike },
     });
 

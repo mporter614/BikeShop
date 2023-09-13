@@ -5,7 +5,10 @@ import { Observable } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 import { BikeService } from 'src/app/bike.service';
 import { Bike, BikeType } from 'src/app/domain/bike';
-import { BikeFormComponent } from '../bike-form/bike-form.component';
+import {
+  BIKE_FORM_DEFAULT_DIMENSIONS,
+  BikeFormComponent,
+} from '../bike-form/bike-form.component';
 
 @Component({
   selector: 'app-bike',
@@ -32,8 +35,7 @@ export class BikeComponent {
 
   openDialog(bike?: Bike): Observable<any> {
     const dialogRef = this.dialog.open(BikeFormComponent, {
-      height: '600px',
-      width: '800px',
+      ...BIKE_FORM_DEFAULT_DIMENSIONS,
       data: { bike: bike },
     });
 

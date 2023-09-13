@@ -3,6 +3,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Bike, BikeType } from 'src/app/domain/bike';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+export const BIKE_FORM_DEFAULT_DIMENSIONS = {
+  height: '600px',
+  width: '800px',
+};
+
 @Component({
   selector: 'app-bike-form',
   templateUrl: './bike-form.component.html',
