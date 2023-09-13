@@ -48,8 +48,17 @@
     </span>
 
     <span>
-      <h3 class="field-title">Photo Url:</h3>
-      <h3>{{ bikeData.photoUrl || "No photo provided." }}</h3>
+      <h3 class="field-title">Photo:</h3>
+      <img
+        [attr.src]="
+          bikeData.photoUrl
+            ? bikeData.photoUrl
+            : './assets/240px-Icon-round-Question_mark.png'
+        "
+      />
+      <div *ngIf="!bikeData.photoUrl">
+        {{ bikeData.photoUrl ? "" : "No photo provided." }}
+      </div>
     </span>
   </div>
 </section>
