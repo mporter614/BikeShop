@@ -6,7 +6,6 @@ import { filter, map, switchMap, tap } from 'rxjs/operators';
 import { BikeService } from 'src/app/bike.service';
 import { Bike, BikeType } from 'src/app/domain/bike';
 import { BikeFormComponent } from '../bike-form/bike-form.component';
-import { ConfigurableExternalApiService } from 'src/app/shared/configurable-external-api.service';
 
 @Component({
   selector: 'app-bike',
@@ -25,8 +24,7 @@ export class BikeComponent {
   constructor(
     private route: ActivatedRoute,
     public dialog: MatDialog,
-    private bikeService: BikeService,
-    private apiService: ConfigurableExternalApiService
+    private bikeService: BikeService
   ) {}
 
   openDialog(bike: Bike): void {
@@ -42,11 +40,9 @@ export class BikeComponent {
   }
 
   onCreate(bike: Bike) {
-    this.apiService.get().subscribe((res) => console.log(res));
-
-    // console.log(bike);
-    // console.log('onCreate clicked');
-    // this.openDialog(bike);
+    console.log(bike);
+    console.log('onCreate clicked');
+    this.openDialog(bike);
   }
 
   onUpdate(bike: Bike) {
