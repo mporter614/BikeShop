@@ -23,6 +23,26 @@ export class BikeFormComponent implements OnInit {
     photoUrl: [''],
   });
 
+  get name() {
+    return this.bikeForm.get('name');
+  }
+
+  get description() {
+    return this.bikeForm.get('description');
+  }
+
+  get price() {
+    return this.bikeForm.get('price');
+  }
+
+  get quantity() {
+    return this.bikeForm.get('quantity');
+  }
+
+  get type() {
+    return this.bikeForm.get('type');
+  }
+
   constructor(
     private formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<BikeFormComponent>,

@@ -1,23 +1,80 @@
-<form [formGroup]="bikeForm" (ngSubmit)="onSubmit()">
-  <label for="name">Name: </label>
-  <input id="name" type="text" formControlName="name" />
+<div style="margin: 16px">
+  <h2>Bike Form</h2>
 
-  <label for="description">Description: </label>
-  <input id="description" type="text" formControlName="description" />
+  <form
+    [formGroup]="bikeForm"
+    (ngSubmit)="onSubmit()"
+    style="display: flex; flex-direction: column"
+  >
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name" />
 
-  <label for="price">Price: </label>
-  <input id="price" type="number" formControlName="price" />
+    <div
+      *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="name?.errors?.['required']">Name is required.</div>
+    </div>
 
-  <label for="quantity">Quantity: </label>
-  <input id="quantity" type="number" formControlName="quantity" />
+    <br />
 
-  <label for="type">Type: </label>
-  <select id="type" formControlName="type">
-    <option *ngFor="let key of typeEnumKeys" [value]="key">
-      {{ bikeType[key] }}
-    </option>
-  </select>
+    <label for="description">Description: </label>
+    <input id="description" type="text" formControlName="description" />
 
-  <p>Complete the form to enable button.</p>
-  <button type="submit" [disabled]="!bikeForm.valid">Submit</button>
-</form>
+    <div
+      *ngIf="
+        description?.invalid && (description?.dirty || description?.touched)
+      "
+      class="alert alert-danger"
+    >
+      <div *ngIf="description?.errors?.['required']">
+        Description is required.
+      </div>
+    </div>
+
+    <br />
+
+    <label for="price">Price: </label>
+    <input id="price" type="number" formControlName="price" />
+
+    <div
+      *ngIf="price?.invalid && (price?.dirty || price?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="price?.errors?.['required']">Price is required.</div>
+    </div>
+
+    <br />
+
+    <label for="quantity">Quantity: </label>
+    <input id="quantity" type="number" formControlName="quantity" />
+
+    <div
+      *ngIf="quantity?.invalid && (quantity?.dirty || quantity?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="quantity?.errors?.['required']">Quantity is required.</div>
+    </div>
+
+    <br />
+
+    <label for="type">Type: </label>
+    <select id="type" formControlName="type">
+      <option *ngFor="let key of typeEnumKeys" [value]="key">
+        {{ bikeType[key] }}
+      </option>
+    </select>
+
+    <div
+      *ngIf="type?.invalid && (type?.dirty || type?.touched)"
+      class="alert alert-danger"
+    >
+      <div *ngIf="type?.errors?.['required']">Type is required.</div>
+    </div>
+
+    <br />
+
+    <p>Complete the form to enable button.</p>
+    <button type="submit" [disabled]="!bikeForm.valid">Submit</button>
+  </form>
+</div>

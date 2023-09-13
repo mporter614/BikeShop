@@ -29,8 +29,8 @@ export class BikeComponent {
 
   openDialog(bike: Bike): void {
     const dialogRef = this.dialog.open(BikeFormComponent, {
-      height: '400px',
-      width: '600px',
+      height: '600px',
+      width: '800px',
       data: { bike: bike },
     });
 
