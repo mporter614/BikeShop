@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { filter, tap } from 'rxjs';
 import { BikeService } from 'src/app/bike.service';
-import { Bike, BikeType } from 'src/app/domain/bike';
+import { Bike } from 'src/app/domain/bike';
 
 @Component({
   selector: 'app-bike',
@@ -12,34 +11,12 @@ import { Bike, BikeType } from 'src/app/domain/bike';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BikeComponent implements OnInit {
-  bikeType = BikeType;
-  typeEnumKeys: number[];
-
-  bikeForm = this.formBuilder.group({
-    name: ['', Validators.required],
-    description: ['', Validators.required],
-    price: [0, Validators.required],
-    quantity: [0, Validators.required],
-    type: [0, Validators.required],
-    //Rating is a derived field from reviews, not present in form
-    //rating: 0,
-    photoUrl: [''],
-  });
-
   bikeData!: Bike | null;
 
   constructor(
-    private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private bikeService: BikeService
-  ) {
-    console.log(Object.keys(this.bikeType));
-    this.typeEnumKeys = Object.keys(this.bikeType)
-      .filter((f) => !isNaN(Number(f)))
-      .map(Number);
-    //this.enumKeys = this.enumKeys.map(key => Number(key));
-    console.log(this.typeEnumKeys);
-  }
+  ) {}
 
   ngOnInit(): void {
     //Experiment to simplify the form group definitions / not bog them down with initialization
@@ -55,16 +32,11 @@ export class BikeComponent implements OnInit {
         tap((bike) => {
           console.log(bike);
           this.bikeData = bike ?? null;
-          this.bikeForm.patchValue({ ...this.bikeData });
+          //this.bikeForm.patchValue({ ...this.bikeData });
           //this.selectedBikeType = this.bikeData?.type;
         })
       )
       .subscribe();
-  }
-
-  onSubmit() {
-    // TODO: emit + consume form data in parent component
-    console.log(this.bikeForm.value);
   }
 
   onCreate() {

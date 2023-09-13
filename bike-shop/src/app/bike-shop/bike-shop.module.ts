@@ -8,9 +8,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { BikeListComponent } from './bike-list/bike-list.component';
 import { BikeComponent } from './bike/bike.component';
 import { BikeShopRoutingModule } from './bike-shop-routing.module';
+import { BikeFormComponent } from './bike-form/bike-form.component';
 
 @NgModule({
-  declarations: [BikeListComponent, BikeComponent],
+  declarations: [BikeListComponent, BikeComponent, BikeFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
