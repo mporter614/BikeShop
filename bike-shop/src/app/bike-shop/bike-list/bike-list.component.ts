@@ -19,6 +19,7 @@ export class BikeListComponent {
     const dialogRef = this.dialog.open(BikeFormComponent, {
       height: '600px',
       width: '800px',
+      data: { bike: bike },
     });
 
     return dialogRef.afterClosed();
@@ -32,6 +33,19 @@ export class BikeListComponent {
       if (result) {
         console.log('calling create');
         this.bikeService.create(result);
+      }
+    });
+  }
+
+  onUpdate(bikeId: string, bike: Bike) {
+    console.log(bike);
+    console.log('onUpdate clicked');
+    this.openDialog(bike).subscribe((result) => {
+      console.log(result);
+      console.log('The dialog was closed');
+      if (result) {
+        console.log('calling update for bike:', bikeId);
+        this.bikeService.update(bikeId, result);
       }
     });
   }

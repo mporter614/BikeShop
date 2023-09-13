@@ -7,12 +7,14 @@
 <br />
 <mat-list>
   <mat-list-item *ngFor="let bike of bikes$ | async; last as last">
-    <div style="display: flex; flex-direction: row">
+    <div style="display: flex; flex-direction: row; gap: 1em">
       <a matListItemTitle [routerLink]="['/bikes', bike.id]">{{ bike.name }}</a>
 
-      <button class="push-to-end" (click)="onDelete(bike.id)">
-        DELETE BIKE
+      <button class="push-to-end" (click)="onUpdate(bike.id, bike)">
+        UPDATE BIKE
       </button>
+
+      <button (click)="onDelete(bike.id)">DELETE BIKE</button>
     </div>
 
     <br />
