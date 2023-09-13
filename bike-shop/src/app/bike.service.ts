@@ -37,7 +37,6 @@ export class BikeService {
       .get<Bike[]>('../assets/data-stubs/bikes.json')
       .subscribe((res) => {
         this.bikes = res;
-        console.log('initial Bikes: ', this.bikes);
       });
   }
 
@@ -67,6 +66,7 @@ export class BikeService {
       const index = this.bikes.indexOf(bikeToUpdate);
       this.bikes[index] = { ...bikeToUpdate, ...bikeData };
 
+      //Needed for onpush changedetection to trigger
       this.bikes = [...this.bikes];
     }
   }
