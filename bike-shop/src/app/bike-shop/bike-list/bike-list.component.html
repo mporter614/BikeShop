@@ -1,6 +1,6 @@
 <h3 style="font-weight: bold">Bike List</h3>
 
-<div style="display: flex; height: 48px">
+<div style="display: flex; height: 24px">
   <button class="push-to-end" (click)="onCreate()">CREATE BIKE</button>
 </div>
 
@@ -17,7 +17,6 @@
       <button (click)="onDelete(bike.id)">DELETE BIKE</button>
     </div>
 
-    <br />
     {{ bike | json }}
     <mat-divider
       [inset]="true"

@@ -12,7 +12,7 @@
 <br />
 
 <mat-card>
-  <div style="font-weight: bold">Weather:</div>
+  <div style="font-weight: bold; margin: 8px">Weather:</div>
   <div
     *ngFor="let weatherData of weatherData$ | async"
     style="margin-left: 16px; margin-bottom: 8px"
@@ -20,3 +20,5 @@
     --{{ weatherData[0] }} : {{ weatherData[1] }} °F
   </div>
 </mat-card>
+
+{{ title }}™
